@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabian Roberto Montes Rodriguez | Desarrollador Web e IA</title>
+  <meta name="description" content="Portafolio de Fabian Roberto Montes Rodriguez, desarrollador web frontend e IA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="statics/styles.css" />
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <a href="#inicio" class="nav__logo">Fabian Roberto Montes Rodriguez</a>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav class="nav__menu" id="navMenu">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contacto">Contacto</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="container hero__inner">
+        <p class="hero__badge"><span class="hero__dot"></span> Disponible para nuevos proyectos</p>
+        <p class="hero__greeting">Hola, soy</p>
+        <h1 class="hero__title">Fabian Roberto Montes Rodriguez</h1>
+        <h2 class="hero__role">Desarrollador Web Frontend · Desarrollador de IA y Bots</h2>
+        <p class="hero__text">
+          Construyo interfaces rápidas, accesibles y con buen diseño,
+          además de soluciones de IA y bots para automatizar tareas.
+          Trabajo con JavaScript, React, Python y C++.
+        </p>
+        <div class="hero__actions">
+          <a href="#proyectos" class="btn btn--primary">Ver proyectos</a>
+          <a href="assets/cv.pdf" class="btn btn--ghost" download>Descargar CV</a>
+        </div>
+      </div>
+      <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar a la sección Sobre mí"></a>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" class="section">
+      <div class="container">
+        <h2 class="section__title">Sobre mí</h2>
+        <div class="about reveal">
+          <p>
+            Soy desarrollador web y de IA con experiencia creando aplicaciones con
+            <strong>JavaScript</strong>, <strong>React</strong>, <strong>Node.js</strong>,
+            <strong>Python</strong> y <strong>C++</strong>. También construyo bots
+            para automatizar tareas. Me gusta resolver problemas, aprender cosas nuevas y cuidar el detalle.
+          </p>
+          <p>
+            Cuando no estoy programando, estoy leyendo sobre diseño de producto
+            o contribuyendo a proyectos open source.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS (se renderizan con JS) -->
+    <section id="proyectos" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">Proyectos</h2>
+        <div class="projects" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades" class="section">
+      <div class="container">
+        <h2 class="section__title">Habilidades</h2>
+        <ul class="skills reveal" id="skillsList"></ul>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">Contacto</h2>
+        <p class="contact__text">
+          ¿Tienes un proyecto en mente o quieres saludar? Escríbeme.
+        </p>
+        <div class="contact__links">
+          <a href="mailto:tucorreo@ejemplo.com" class="btn btn--primary">📧 Email</a>
+          <a href="https://github.com/tuusuario" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
+          <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener" class="btn btn--ghost">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Fabian Roberto Montes Rodriguez · Hecho con JS y ☕</p>
+    </div>
+  </footer>
+
+  <script src="statics/projects.js"></script>
+  <script src="statics/script.js"></script>
+</body>
+</html>
