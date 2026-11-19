@@ -8,24 +8,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="statics/styles.css" />
 </head>
 <body>
 
   <header class="nav" id="nav">
-    <a href="#inicio" class="nav__logo">Fabian Roberto Montes Rodriguez</a>
+    <a href="#inicio" class="nav__logo">CV <span>| Fabian Montes</span></a>
 
-    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-      ☰
-    </button>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
     <nav class="nav__menu" id="navMenu">
-      <a href="#inicio">Inicio</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#contacto">Contacto</a>
-      <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+      <a href="#inicio" data-i18n="nav.home">Inicio</a>
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+      <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+      <div class="nav__controls">
+        <button id="langToggle" class="lang-toggle" aria-label="Cambiar idioma" title="Español / English">ES</button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+      </div>
     </nav>
   </header>
 
@@ -33,69 +44,118 @@
     <!-- HERO -->
     <section id="inicio" class="hero">
       <div class="container hero__inner">
-        <p class="hero__badge"><span class="hero__dot"></span> Disponible para nuevos proyectos</p>
-        <p class="hero__greeting">Hola, soy</p>
-        <h1 class="hero__title">Fabian Roberto Montes Rodriguez</h1>
-        <h2 class="hero__role">Desarrollador Web Frontend · Desarrollador de IA y Bots</h2>
-        <p class="hero__text">
-          Construyo interfaces rápidas, accesibles y con buen diseño,
-          además de soluciones de IA y bots para automatizar tareas.
-          Trabajo con JavaScript, React, Python y C++.
-        </p>
-        <div class="hero__actions">
-          <a href="#proyectos" class="btn btn--primary">Ver proyectos</a>
-          <a href="assets/cv.pdf" class="btn btn--ghost" download>Descargar CV</a>
+        <div class="hero__content">
+          <p class="hero__badge"><span class="hero__dot"></span> <span data-i18n="hero.badge">Disponible para nuevos proyectos</span></p>
+          <p class="hero__greeting" data-i18n="hero.greeting">Hola, soy</p>
+          <h1 class="hero__title">Fabian Roberto Montes Rodriguez</h1>
+          <h2 class="hero__role" data-i18n="hero.role">Desarrollador Web Frontend · Desarrollador de IA y Bots</h2>
+          <p class="hero__text" data-i18n="hero.text">
+            Construyo interfaces rápidas, accesibles y con buen diseño,
+            además de soluciones de IA y bots para automatizar tareas.
+            Trabajo con JavaScript, React, Python y C++.
+          </p>
+          <div class="hero__actions">
+            <a href="#proyectos" class="btn btn--primary" data-i18n="hero.viewProjects">Ver proyectos</a>
+            <a href="#contacto" class="btn btn--ghost" data-i18n="hero.contactMe">Contáctame</a>
+          </div>
         </div>
-      </div>
-      <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar a la sección Sobre mí"></a>
-    </section>
-
-    <!-- SOBRE MÍ -->
-    <section id="sobre-mi" class="section">
-      <div class="container">
-        <h2 class="section__title">Sobre mí</h2>
-        <div class="about reveal">
-          <p>
-            Soy desarrollador web y de IA con experiencia creando aplicaciones con
-            <strong>JavaScript</strong>, <strong>React</strong>, <strong>Node.js</strong>,
-            <strong>Python</strong> y <strong>C++</strong>. También construyo bots
-            para automatizar tareas. Me gusta resolver problemas, aprender cosas nuevas y cuidar el detalle.
-          </p>
-          <p>
-            Cuando no estoy programando, estoy leyendo sobre diseño de producto
-            o contribuyendo a proyectos open source.
-          </p>
+        <div class="hero__image-wrap">
+          <!-- Imagen en la carpeta images/ -->
+          <img src="images/profile.jpg" alt="Fabian Montes" class="hero__image" />
         </div>
       </div>
     </section>
 
-    <!-- PROYECTOS (se renderizan con JS) -->
-    <section id="proyectos" class="section section--alt">
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section section--alt">
       <div class="container">
-        <h2 class="section__title">Proyectos</h2>
+        <h2 class="section__title" data-i18n="services.title">Soluciones Digitales</h2>
+        <p class="section__subtitle" data-i18n="services.subtitle">Full Stack Web & IA Personalizada</p>
+        
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <i class="fa-solid fa-code service-card__icon"></i>
+            <h3 data-i18n="services.s1.title">Desarrollo Web Full Stack</h3>
+            <p data-i18n="services.s1.desc">Frontend y Backend a medida.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-cart-shopping service-card__icon"></i>
+            <h3 data-i18n="services.s2.title">Plataformas E-commerce y Landing Pages</h3>
+            <p data-i18n="services.s2.desc">Tiendas online y páginas de aterrizaje.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-robot service-card__icon"></i>
+            <h3 data-i18n="services.s3.title">Desarrollo de Agentes de IA y Automatización</h3>
+            <p data-i18n="services.s3.desc">Automatiza flujos de trabajo inteligentes.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-comments service-card__icon"></i>
+            <h3 data-i18n="services.s4.title">Creación de Bots Personalizados</h3>
+            <p data-i18n="services.s4.desc">Asistentes virtuales a tu medida.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-briefcase service-card__icon"></i>
+            <h3 data-i18n="services.s5.title">Creación de Bots Personalizados para Negocios</h3>
+            <p data-i18n="services.s5.desc">Atención al cliente y ventas automatizadas.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-server service-card__icon"></i>
+            <h3 data-i18n="services.s6.title">Integración de APIs y Bases de Datos</h3>
+            <p data-i18n="services.s6.desc">Conectamos tus servicios y almacenamiento.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-gauge-high service-card__icon"></i>
+            <h3 data-i18n="services.s7.title">Optimización de Rendimiento y UX/UI</h3>
+            <p data-i18n="services.s7.desc">Velocidad y experiencia de usuario superior.</p>
+          </div>
+          <div class="service-card reveal">
+            <i class="fa-solid fa-layer-group service-card__icon"></i>
+            <h3 data-i18n="services.s8.title">Soluciones Digitales Integrales</h3>
+            <p data-i18n="services.s8.desc">Ecosistemas completos para tu negocio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="section">
+      <div class="container">
+        <h2 class="section__title" data-i18n="projects.title">Proyectos</h2>
         <div class="projects" id="projectsGrid"></div>
       </div>
     </section>
 
     <!-- HABILIDADES -->
-    <section id="habilidades" class="section">
+    <section id="habilidades" class="section section--alt">
       <div class="container">
-        <h2 class="section__title">Habilidades</h2>
+        <h2 class="section__title" data-i18n="skills.title">Habilidades</h2>
         <ul class="skills reveal" id="skillsList"></ul>
+        
+        <!-- Tecnologías destacadas -->
+        <div class="tech-stack reveal">
+          <i class="fa-brands fa-react" title="React"></i>
+          <i class="fa-brands fa-node-js" title="Node.js"></i>
+          <i class="fa-brands fa-python" title="Python"></i>
+          <i class="fa-solid fa-brain" title="OpenAI / IA"></i>
+          <i class="fa-brands fa-js" title="JavaScript"></i>
+        </div>
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="section section--alt">
-      <div class="container">
-        <h2 class="section__title">Contacto</h2>
-        <p class="contact__text">
+    <!-- CONTACTO (Con fondo difuminado) -->
+    <section id="contacto" class="section">
+      <!-- Fondo difuminado -->
+      <div class="contact__bg"></div>
+      
+      <div class="container contact__content">
+        <h2 class="section__title" data-i18n="contact.title">Contacto</h2>
+        <p class="contact__text" data-i18n="contact.text">
           ¿Tienes un proyecto en mente o quieres saludar? Escríbeme.
         </p>
         <div class="contact__links">
-          <a href="mailto:tucorreo@ejemplo.com" class="btn btn--primary">📧 Email</a>
-          <a href="https://github.com/tuusuario" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
-          <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener" class="btn btn--ghost">LinkedIn</a>
+          <a href="https://wa.me/+5352483821" target="_blank" rel="noopener" class="btn btn--primary">
+            <i class="fa-brands fa-whatsapp"></i> <span data-i18n="contact.whatsapp">WhatsApp</span>
+          </a>
         </div>
       </div>
     </section>
@@ -103,7 +163,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> Fabian Roberto Montes Rodriguez · Hecho con JS y ☕</p>
+      <p>© <span id="year"></span> Fabian Roberto Montes Rodriguez · <span data-i18n="footer.text">Hecho con JS y ☕</span></p>
     </div>
   </footer>
 

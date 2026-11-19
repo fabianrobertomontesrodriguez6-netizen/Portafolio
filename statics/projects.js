@@ -1,18 +1,30 @@
-// Array de proyectos. Para agregar uno nuevo, copia un bloque y edítalo.
+// Proyectos. Para agregar uno nuevo, copiá un bloque.
+// Campos opcionales en inglés: title_en, description_en.
 const PROJECTS = [
   {
     title: "Portafolio v1",
+    title_en: "Portfolio v1",
     description: "Mi primer portafolio, 100% estático y desplegado en GitHub Pages.",
+    description_en: "My first portfolio, 100% static and deployed on GitHub Pages.",
     tech: ["HTML", "CSS", "JS"],
     demo: "https://tuusuario.github.io/portafolio/",
     repo: "https://github.com/tuusuario/portafolio",
-    image: "https://picsum.photos/seed/portfolio/600/400"
+    image: "images/logo.jpg" // <-- Ruta actualizada
   }
 ];
 
-// Lista de habilidades agrupadas
-const SKILLS = {
-  "Lenguajes": ["JavaScript", "TypeScript", "Python", "C++", "HTML5", "CSS3", "SQL"],
-  "Frameworks y librerías": ["React", "Node.js", "Express", "Tailwind CSS"],
-  "Herramientas": ["Git", "GitHub", "Vite", "Figma", "Docker"]
-};
+// Habilidades. Cada grupo referencia una clave del diccionario de traducciones.
+const SKILLS = [
+  {
+    key: "skills.languages",
+    items: ["JavaScript", "TypeScript", "Python", "C++", "HTML5", "CSS3", "SQL"]
+  },
+  {
+    key: "skills.frameworks",
+    items: ["React", "Node.js", "Express", "Tailwind CSS"]
+  },
+  {
+    key: "skills.tools",
+    items: ["Git", "GitHub", "Vite", "Figma", "Docker"]
+  }
+];
