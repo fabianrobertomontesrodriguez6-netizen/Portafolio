@@ -23,3 +23,29 @@
 
 ## Pendientes
 - (Ninguno por ahora, ¡todo listo!)
+
+---
+
+## Actualización: Fondo de circuito motherboard con puntos neón
+
+### Qué se añadió
+- Fondo fijo (`position: fixed`) detrás del contenido principal con un SVG que dibuja **12 pistas estilo motherboard**: líneas rectas con esquinas a 90°, distribuidas por toda la pantalla (horizontales, verticales y zigzag).
+- Cada pista tiene **un punto azul neón** que la recorre de punta a punta de forma indefinida.
+- Direcciones alternadas: las pistas impares van en un sentido (izq→der / arriba→abajo) y las pares en sentido contrario (der→izq / abajo→arriba), usando `keyPoints="1;0"`.
+- Velocidad media: duraciones entre **5s y 8s** según la pista.
+- Cada pista tiene pequeños **nodos/pads** en sus extremos para reforzar el look PCB.
+
+### Implementación técnica
+- **SVG inline en `index.html`**: 12 `<path>` con `id` único + 12 `<circle class="neon-dot">` animados con `<animateMotion>` + `<mpath>` (estándar SVG, sin JS ni librerías).
+- **Filtro SVG `neonGlow` / `neonGlowSoft`**: `feGaussianBlur` + `feMerge` para el halo del neón. Además `drop-shadow` en CSS como refuerzo.
+- **Variables CSS nuevas** en `:root` y `[data-theme="dark"]`:
+  - `--circuit-line`: color de las pistas.
+  - `--circuit-node`: color de los pads.
+  - `--neon` / `--neon-soft`: tonos del azul neón.
+  - `--circuit-opacity`: visibilidad global del fondo (0.55 claro / 0.85 oscuro).
+- **Capas z-index**: `.circuit-bg` z-index 0, `main` y `.footer` con `position: relative; z-index: 1`, `.nav` sigue en z-index 50.
+- **Accesibilidad**: `aria-hidden="true"` en el SVG; `prefers-reduced-motion` detiene los puntos y reduce la opacidad.
+
+### Archivos modificados
+- `index.html` → SVG del circuito justo después de `<body>`.
+- `statics/styles.css` → variables en `:root` y `[data-theme="dark"]`, `position: relative` en `main` y `.footer`, bloque nuevo `.circuit-bg` al final.

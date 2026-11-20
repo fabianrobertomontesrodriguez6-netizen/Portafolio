@@ -15,6 +15,13 @@
   --max: 1100px;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-heading: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Circuit motherboard */
+  --circuit-line: #d4d4d4;       /* color de las pistas en modo claro */
+  --circuit-node: #b0b0b0;      /* nodos/pads en las puntas */
+  --neon: #00f0ff;               /* azul neón */
+  --neon-soft: #00d4ff;
+  --circuit-opacity: 0.55;      /* visibilidad global del fondo de circuito */
 }
 
 [data-theme="dark"] {
@@ -29,6 +36,13 @@
   --border: #262626;
   --shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.7);
+
+  /* Circuit motherboard en modo oscuro: líneas más visibles y neón más intenso */
+  --circuit-line: #2a2a35;
+  --circuit-node: #3a3a48;
+  --neon: #00f0ff;
+  --neon-soft: #4dd9ff;
+  --circuit-opacity: 0.85;
 }
 
 /* ===== Reset básico ===== */
@@ -56,6 +70,9 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.15; margin: 0 0 .5
 ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--text) 35%, transparent); border-radius: 999px; }
 
 .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+/* Asegura que el contenido quede por encima del fondo de circuito */
+main { position: relative; z-index: 1; }
 
 /* ===== Nav ===== */
 .nav {
@@ -247,7 +264,7 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.15; margin: 0 0 .5
 .contact__links { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /* ===== Footer ===== */
-.footer { padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: .9rem; }
+.footer { position: relative; z-index: 1; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: .9rem; }
 
 /* ===== Animaciones ===== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
@@ -285,4 +302,56 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.15; margin: 0 0 .5
   .hero { padding: 3rem 0; }
   .section { padding: 3.5rem 0; }
   .tech-stack { font-size: 2.5rem; gap: 1.5rem; }
+}
+
+/* ===== Fondo de circuito tipo motherboard ===== */
+.circuit-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--circuit-opacity);
+  /* Suaviza la entrada y respeta reduce-motion */
+  transition: opacity .4s ease;
+}
+
+.circuit-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Las pistas (líneas) del circuito */
+.circuit-line {
+  fill: none;
+  stroke: var(--circuit-line);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Nodos / pads en los extremos de cada pista */
+.circuit-node {
+  fill: var(--circuit-node);
+}
+
+/* Puntos neón que se desplazan por las pistas */
+.neon-dot {
+  fill: var(--neon);
+  /* Sutil drop-shadow para reforzar el glow en navegadores sin filter SVG */
+  filter: drop-shadow(0 0 4px var(--neon)) drop-shadow(0 0 8px var(--neon-soft));
+}
+
+/* En modo oscuro, reforzamos el brillo de las pistas mismas */
+[data-theme="dark"] .circuit-line {
+  stroke-width: 1;
+}
+[data-theme="dark"] .neon-dot {
+  filter: drop-shadow(0 0 6px var(--neon)) drop-shadow(0 0 12px var(--neon-soft));
+}
+
+/* Si el usuario prefiere menos movimiento, congelamos los puntos */
+@media (prefers-reduced-motion: reduce) {
+  .circuit-bg { opacity: calc(var(--circuit-opacity) * 0.5); }
+  .neon-dot animateMotion { display: none; }
 }
