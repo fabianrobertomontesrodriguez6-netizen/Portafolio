@@ -1,10 +1,3 @@
-
----
-
-### 3. `guia.md` (Actualizado)
-Se agregó el registro de los cambios finales.
-
-```markdown
 # Guía del portafolio
 
 ## Tareas Realizadas
@@ -27,11 +20,51 @@ Se agregó el registro de los cambios finales.
 - [x] **8.** Ajuste de visibilidad del banner en Contacto:
   - Se redujo el desenfoque a `4px` (solo un poco) y se aumentó la opacidad a `0.6` en claro y `0.75` en oscuro.
   - Se añadió `text-shadow` a los textos de la sección para mantener una legibilidad perfecta sobre el fondo.
-- [x] **9.** Fondo de circuito motherboard con puntos neón:
-  - Se implementó un SVG animado de fondo con pistas de circuito y puntos neón.
-- [x] **10.** Actualización de enlaces y documentación:
-  - Se agregaron los enlaces reales (Demo y Repo) para el proyecto "Portafolio v1" en `projects.js`.
-  - Se creó un archivo `README.md` completo detallando la estructura, tecnologías y cómo personalizar el portafolio.
 
 ## Pendientes
 - (Ninguno por ahora, ¡todo listo!)
+
+---
+
+## Actualización: Fondo de circuito motherboard con puntos neón
+
+### Qué se añadió
+- Fondo fijo (`position: fixed`) detrás del contenido principal con un SVG que dibuja **12 pistas estilo motherboard**: líneas rectas con esquinas a 90°, distribuidas por toda la pantalla (horizontales, verticales y zigzag).
+- Cada pista tiene **un punto azul neón** que la recorre de punta a punta de forma indefinida.
+- Direcciones alternadas: las pistas impares van en un sentido (izq→der / arriba→abajo) y las pares en sentido contrario (der→izq / abajo→arriba), usando `keyPoints="1;0"`.
+- Velocidad media: duraciones entre **5s y 8s** según la pista.
+- Cada pista tiene pequeños **nodos/pads** en sus extremos para reforzar el look PCB.
+
+### Implementación técnica
+- **SVG inline en `index.html`**: 12 `<path>` con `id` único + 12 `<circle class="neon-dot">` animados con `<animateMotion>` + `<mpath>` (estándar SVG, sin JS ni librerías).
+- **Filtro SVG `neonGlow` / `neonGlowSoft`**: `feGaussianBlur` + `feMerge` para el halo del neón. Además `drop-shadow` en CSS como refuerzo.
+- **Variables CSS nuevas** en `:root` y `[data-theme="dark"]`:
+  - `--circuit-line`: color de las pistas.
+  - `--circuit-node`: color de los pads.
+  - `--neon` / `--neon-soft`: tonos del azul neón.
+  - `--circuit-opacity`: visibilidad global del fondo (0.55 claro / 0.85 oscuro).
+- **Capas z-index**: `.circuit-bg` z-index 0, `main` y `.footer` con `position: relative; z-index: 1`, `.nav` sigue en z-index 50.
+- **Accesibilidad**: `aria-hidden="true"` en el SVG; `prefers-reduced-motion` detiene los puntos y reduce la opacidad.
+
+### Archivos modificados
+- `index.html` → SVG del circuito justo después de `<body>`.
+- `statics/styles.css` → variables en `:root` y `[data-theme="dark"]`, `position: relative` en `main` y `.footer`, bloque nuevo `.circuit-bg` al final.
+
+---
+
+## Actualización: Nuevo proyecto "Tienda E-commerce"
+
+### Qué se añadió
+- Nueva entrada en el array `PROJECTS` de `statics/projects.js` con:
+  - **Título**: "Tienda E-commerce" (EN: "E-commerce Store")
+  - **Descripción**: Tienda online con estética urbana moderna (catálogo, carrito y checkout), construida con HTML, CSS y JS vanilla.
+  - **Tech**: `["HTML", "CSS", "JS"]`
+  - **Demo**: https://fabianrobertomontesrodriguez6-netizen.github.io/Tienda-Ecommerce/
+  - **Código**: https://github.com/fabianrobertomontesrodriguez6-netizen/Tienda-Ecommerce
+  - **Imagen**: `images/ecommerce.jpg` (thumbnail generada, 1344x768)
+- La card se renderiza automáticamente gracias al `renderProjects()` existente en `script.js`, sin necesidad de tocar el HTML.
+
+### Archivos modificados
+- `statics/projects.js` → agregada entrada del nuevo proyecto al final del array `PROJECTS`.
+- `images/ecommerce.jpg` → nueva thumbnail generada (estilo urbano moderno, dark mode con acentos amarillos/blancos).
+- `guia.md` → esta nota.

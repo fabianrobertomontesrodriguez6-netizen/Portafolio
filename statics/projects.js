@@ -9,7 +9,17 @@ const PROJECTS = [
     tech: ["HTML", "CSS", "JS"],
     demo: "https://fabianrobertomontesrodriguez6-netizen.github.io/Portafolio",
     repo: "https://github.com/fabianrobertomontesrodriguez6-netizen/Portafolio",
-    image: "images/logo.jpg"
+    image: "images/logo.jpg" // <-- Ruta actualizada
+  },
+  {
+    title: "Tienda E-commerce",
+    title_en: "E-commerce Store",
+    description: "Tienda online con estética urbana moderna: catálogo de productos, carrito y checkout. Construida 100% con HTML, CSS y JavaScript vanilla.",
+    description_en: "Online store with modern urban aesthetic: product catalog, shopping cart and checkout. Built 100% with HTML, CSS and vanilla JavaScript.",
+    tech: ["HTML", "CSS", "JS"],
+    demo: "https://fabianrobertomontesrodriguez6-netizen.github.io/Tienda-Ecommerce/",
+    repo: "https://github.com/fabianrobertomontesrodriguez6-netizen/Tienda-Ecommerce",
+    image: "images/ecommerce.jpg"
   }
 ];
 
