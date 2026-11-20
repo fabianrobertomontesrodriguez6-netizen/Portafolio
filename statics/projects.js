@@ -7,8 +7,8 @@ const PROJECTS = [
     description: "Mi primer portafolio, 100% estático y desplegado en GitHub Pages.",
     description_en: "My first portfolio, 100% static and deployed on GitHub Pages.",
     tech: ["HTML", "CSS", "JS"],
-    demo: "https://tuusuario.github.io/portafolio/",
-    repo: "https://github.com/tuusuario/portafolio",
+    demo: "https://fabianrobertomontesrodriguez6-netizen.github.io/Portafolio",
+    repo: "https://github.com/fabianrobertomontesrodriguez6-netizen/Portafolio",
     image: "images/logo.jpg" // <-- Ruta actualizada
   }
 ];
