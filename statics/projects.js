@@ -9,7 +9,7 @@ const PROJECTS = [
     tech: ["HTML", "CSS", "JS"],
     demo: "https://fabianrobertomontesrodriguez6-netizen.github.io/Portafolio",
     repo: "https://github.com/fabianrobertomontesrodriguez6-netizen/Portafolio",
-    image: "images/logo.jpg" // <-- Ruta actualizada
+    image: "images/logo.jpg"
   }
 ];
 
