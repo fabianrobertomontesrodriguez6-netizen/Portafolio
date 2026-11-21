@@ -1,29 +1,17 @@
-// Proyectos. Para agregar uno nuevo, copiá un bloque.
-// Campos opcionales en inglés: title_en, description_en.
-const PROJECTS = [
-  {
-    title: "Portafolio v1",
-    title_en: "Portfolio v1",
-    description: "Mi primer portafolio, 100% estático y desplegado en GitHub Pages.",
-    description_en: "My first portfolio, 100% static and deployed on GitHub Pages.",
-    tech: ["HTML", "CSS", "JS"],
-    demo: "https://fabianrobertomontesrodriguez6-netizen.github.io/Portafolio",
-    repo: "https://github.com/fabianrobertomontesrodriguez6-netizen/Portafolio",
-    image: "images/logo.jpg" // <-- Ruta actualizada
-  },
-  {
-    title: "Tienda E-commerce",
-    title_en: "E-commerce Store",
-    description: "Tienda online con estética urbana moderna: catálogo de productos, carrito y checkout. Construida 100% con HTML, CSS y JavaScript vanilla.",
-    description_en: "Online store with modern urban aesthetic: product catalog, shopping cart and checkout. Built 100% with HTML, CSS and vanilla JavaScript.",
-    tech: ["HTML", "CSS", "JS"],
-    demo: "https://fabianrobertomontesrodriguez6-netizen.github.io/Tienda-Ecommerce/",
-    repo: "https://github.com/fabianrobertomontesrodriguez6-netizen/Tienda-Ecommerce",
-    image: "images/ecommerce.jpg"
-  }
-];
+// ===================================================================
+//  projects.js
+//  -------------------------------------------------------------------
+//  Carga los proyectos desde statics/projects.json (fetch) y los
+//  inyecta directamente como HTML dentro de #projectsGrid en
+//  index.html. A partir de ahora, para agregar un proyecto nuevo
+//  NO hace falta tocar este archivo: basta con editar projects.json.
+// ===================================================================
 
-// Habilidades. Cada grupo referencia una clave del diccionario de traducciones.
+// Datos cargados desde el JSON. Se rellena tras el fetch.
+let PROJECTS = [];
+
+// Habilidades. Cada grupo referencia una clave del diccionario de
+// traducciones de script.js. (Se mantiene aquí, sin cambios.)
 const SKILLS = [
   {
     key: "skills.languages",
@@ -38,3 +26,81 @@ const SKILLS = [
     items: ["Git", "GitHub", "Vite", "Figma", "Docker"]
   }
 ];
+
+// Ruta del JSON (relativa a index.html, que está en la raíz del repo).
+const PROJECTS_JSON_URL = "statics/projects.json";
+
+// -------------------------------------------------------------------
+//  renderProjects: inyecta las tarjetas de proyecto en #projectsGrid.
+//  Usa `currentLang` y `t()` que viven en script.js (globals).
+// -------------------------------------------------------------------
+function renderProjects() {
+  const grid = document.getElementById("projectsGrid");
+  if (!grid) return;
+
+  // Si los datos aún no cargaron, no pinta nada (se re-renderiza al
+  // terminar el fetch). Si quieres mostrar un loader, puedes
+  // descomentar la línea de abajo.
+  // if (PROJECTS.length === 0) grid.innerHTML = "<p class='card__desc'>Cargando proyectos…</p>";
+
+  grid.innerHTML = PROJECTS.map((p) => {
+    const title = currentLang === "en" && p.title_en ? p.title_en : p.title;
+    const desc  = currentLang === "en" && p.description_en ? p.description_en : p.description;
+    return `
+      <article class="card reveal">
+        <div class="card__img-wrap">
+          <img class="card__img" src="${p.image}" alt="${title}" loading="lazy" />
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">${title}</h3>
+          <p class="card__desc">${desc}</p>
+          <ul class="card__tags">
+            ${p.tech.map((tag) => `<li>${tag}</li>`).join("")}
+          </ul>
+          <div class="card__links">
+            <a href="${p.demo}" target="_blank" rel="noopener" class="card__link">${t("projects.demo")} ↗</a>
+            <a href="${p.repo}" target="_blank" rel="noopener" class="card__link">${t("projects.code")} ↗</a>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+// -------------------------------------------------------------------
+//  loadProjects: lee projects.json, popula PROJECTS y dispara el
+//  render. Se ejecuta solo una vez al cargar la página.
+// -------------------------------------------------------------------
+async function loadProjects() {
+  try {
+    const res = await fetch(PROJECTS_JSON_URL, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status} al cargar projects.json`);
+    const data = await res.json();
+
+    // Acepta tanto un array directo como un objeto { projects: [...] }
+    PROJECTS = Array.isArray(data) ? data : (data.projects || []);
+
+    // Inyecta el HTML en index.html
+    renderProjects();
+
+    // Re-inicia el observer de reveal para animar las tarjetas nuevas
+    if (typeof initReveal === "function") initReveal();
+  } catch (err) {
+    console.error("[projects.js] No se pudieron cargar los proyectos:", err);
+    const grid = document.getElementById("projectsGrid");
+    if (grid) {
+      grid.innerHTML =
+        "<p class='card__desc'>No se pudieron cargar los proyectos. " +
+        "Verifica que statics/projects.json exista y sea válido.</p>";
+    }
+  }
+}
+
+// -------------------------------------------------------------------
+//  Arranque: dispara la carga cuando el DOM esté listo.
+// -------------------------------------------------------------------
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", loadProjects);
+} else {
+  loadProjects();
+}

@@ -126,34 +126,9 @@ function applyTranslations() {
 }
 
 // ===== Renderizar proyectos =====
-function renderProjects() {
-  const grid = document.getElementById("projectsGrid");
-  if (!grid) return;
-
-  grid.innerHTML = PROJECTS.map((p) => {
-    const title = currentLang === "en" && p.title_en ? p.title_en : p.title;
-    const desc  = currentLang === "en" && p.description_en ? p.description_en : p.description;
-    return `
-      <article class="card reveal">
-        <div class="card__img-wrap">
-          <img class="card__img" src="${p.image}" alt="${title}" loading="lazy" />
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">${title}</h3>
-          <p class="card__desc">${desc}</p>
-          <ul class="card__tags">
-            ${p.tech.map((tag) => `<li>${tag}</li>`).join("")}
-          </ul>
-          <div class="card__links">
-            <a href="${p.demo}" target="_blank" rel="noopener" class="card__link">${t("projects.demo")} ↗</a>
-            <a href="${p.repo}" target="_blank" rel="noopener" class="card__link">${t("projects.code")} ↗</a>
-          </div>
-        </div>
-      </article>
-    `;
-  }).join("");
-}
-
+// Nota: renderProjects() ahora vive en statics/projects.js y lee los
+// datos desde statics/projects.json. Desde aquí solo la llamamos
+// (init() y el cambio de idioma la invocan).
 // ===== Renderizar habilidades =====
 function renderSkills() {
   const list = document.getElementById("skillsList");
