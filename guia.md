@@ -20,6 +20,9 @@
 - [x] **8.** Ajuste de visibilidad del banner en Contacto:
   - Se redujo el desenfoque a `4px` (solo un poco) y se aumentó la opacidad a `0.6` en claro y `0.75` en oscuro.
   - Se añadió `text-shadow` a los textos de la sección para mantener una legibilidad perfecta sobre el fondo.
+- [x] **9.** Botón "Demo" condicional en las tarjetas de proyecto:
+  - Si un proyecto no tiene `demo` (o viene vacío) en `statics/projects.json`, el botón "Demo" **no se renderiza** en la tarjeta.
+  - El botón "Código" sigue apareciendo siempre que exista `repo` (también se hardenizó con la misma condicional).
 
 ## Pendientes
 - (Ninguno por ahora, ¡todo listo!)
@@ -68,3 +71,27 @@
 - `statics/projects.js` → agregada entrada del nuevo proyecto al final del array `PROJECTS`.
 - `images/ecommerce.jpg` → nueva thumbnail generada (estilo urbano moderno, dark mode con acentos amarillos/blancos).
 - `guia.md` → esta nota.
+
+---
+
+## Actualización: Botón "Demo" condicional según projects.json
+
+### Qué se añadió
+- En `renderProjects()` de `statics/projects.js` se envolvió el `<a>` del botón "Demo" en una condicional:
+  - Solo se renderiza si el proyecto tiene `demo` y no es una cadena vacía.
+  - Si `demo` falta o viene vacío en `projects.json`, el botón **no aparece** en la tarjeta.
+- Por consistencia, se aplicó la misma validación al botón "Código" (`repo`), de modo que si en el futuro algún proyecto no tenga repo, tampoco renderice su enlace.
+
+### Implementación técnica
+- Cambio puntual dentro del template literal de `renderProjects()`:
+  ```js
+  ${p.demo && String(p.demo).trim() !== ""
+    ? `<a href="${p.demo}" target="_blank" rel="noopener" class="card__link">${t("projects.demo")} ↗</a>`
+    : ""}
+  ```
+- No se modificó `projects.json`: los proyectos que ya tenían `demo` siguen mostrándolo normalmente. Para ocultar el botón en un proyecto nuevo, basta con **omitir** la clave `demo` (o dejarla como `""`) en su entrada del JSON.
+- No se tocaron estilos: `.card__links` ya maneja de forma natural el caso de un solo hijo, así que cuando solo aparece "Código" la tarjeta se ve correctamente.
+
+### Archivos modificados
+- `statics/projects.js` → condicional en el render del botón "Demo" y "Código".
+- `guia.md` → esta nota + entrada **9** en "Tareas Realizadas".

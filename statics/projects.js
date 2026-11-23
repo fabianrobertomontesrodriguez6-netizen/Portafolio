@@ -58,8 +58,8 @@ function renderProjects() {
             ${p.tech.map((tag) => `<li>${tag}</li>`).join("")}
           </ul>
           <div class="card__links">
-            <a href="${p.demo}" target="_blank" rel="noopener" class="card__link">${t("projects.demo")} ↗</a>
-            <a href="${p.repo}" target="_blank" rel="noopener" class="card__link">${t("projects.code")} ↗</a>
+            ${p.demo && String(p.demo).trim() !== "" ? `<a href="${p.demo}" target="_blank" rel="noopener" class="card__link">${t("projects.demo")} ↗</a>` : ""}
+            ${p.repo && String(p.repo).trim() !== "" ? `<a href="${p.repo}" target="_blank" rel="noopener" class="card__link">${t("projects.code")} ↗</a>` : ""}
           </div>
         </div>
       </article>
