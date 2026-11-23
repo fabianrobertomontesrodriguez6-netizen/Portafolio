@@ -28,5 +28,15 @@
   "demo": "https://dashboard-del-clima.netlify.app/",
   "repo": "https://github.com/fabianrobertomontesrodriguez6-netizen/Dashboard-del-Clima",
   "image": "images/dashboard_clima.png"
-  }
+  },
+  {
+  "title": "CarTur - Concesionario",
+  "title_en": "CarTur - Car Dealership",
+  "description": "CarTur es un concesionario virtual desarrollado con Laravel 11 y PHP 8.2 que permite explorar un catálogo de autos de lujo (Ford, Lamborghini, BMW, Ferrari, Aorus, Mercedes-Benz y Audi) con un diseño minimalista en blanco y negro.",
+  "description_en": "CarTur is a virtual car dealership built with Laravel 11 and PHP 8.2 that lets you browse a catalog of luxury cars (Ford, Lamborghini, BMW, Ferrari, Aorus, Mercedes-Benz, and Audi) with a minimalist black-and-white design.",
+  "tech": ["PHP", "Laravel", "Blade", "CSS", "JS", "SQLite"],
+  "demo": "",
+  "repo": "https://github.com/fabianrobertomontesrodriguez6-netizen/cartur-paginawebPHP",
+  "image": "images/concecionario.png"
+}
 ]
