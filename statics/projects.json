@@ -25,7 +25,7 @@
   "description": "Dashboard del Clima es una aplicación web estática para consultar el clima, desarrollada con TypeScript, CSS y JavaScript.",
   "description_en": "Weather Dashboard is a static web application for checking the weather, built with TypeScript, CSS, and JavaScript.",
   "tech": ["TS", "CSS", "JS"],
-  "demo": "https://dashboard-del-clima.netlify.app/",
+  "demo": "",
   "repo": "https://github.com/fabianrobertomontesrodriguez6-netizen/Dashboard-del-Clima",
   "image": "images/dashboard_clima.png"
   },
