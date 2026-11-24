@@ -38,5 +38,15 @@
   "demo": "",
   "repo": "https://github.com/fabianrobertomontesrodriguez6-netizen/cartur-paginawebPHP",
   "image": "images/concecionario.png"
+},
+{
+  "title": "Proyecto con API de Peliculas de UCM",
+  "title_en": "UCM Movie API Project",
+  "description": "Proyecto desarrollado en PHP que muestra la siguiente película del UCM (Universo Cinematográfico de Marvel) utilizando una API pública.",
+  "description_en": "PHP project that displays the next movie in the MCU (Marvel Cinematic Universe) using a public API.",
+  "tech": ["PHP", "API"],
+  "demo": "",
+  "repo": "https://github.com/fabianrobertomontesrodriguez6-netizen/Curso-PHP-project",
+  "image": "UCM.png"
 }
 ]
