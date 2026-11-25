@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- FontAwesome para iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script>
     (function () {
@@ -42,124 +41,88 @@
         </filter>
       </defs>
 
-      <!-- Línea 1: horizontal superior (izq → der) -->
       <path id="c1" class="circuit-line" d="M0,80 L300,80 L300,150 L600,150 L600,80 L900,80 L900,150 L1200,150" />
       <circle class="circuit-node" cx="0" cy="80" r="3" />
       <circle class="circuit-node" cx="1200" cy="150" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="6s" repeatCount="indefinite" rotate="0">
-          <mpath href="#c1" />
-        </animateMotion>
+        <animateMotion dur="6s" repeatCount="indefinite" rotate="0"><mpath href="#c1" /></animateMotion>
       </circle>
 
-      <!-- Línea 2: horizontal superior-media (der → izq) -->
       <path id="c2" class="circuit-line" d="M1440,250 L1150,250 L1150,330 L850,330 L850,250 L500,250 L500,330 L200,330 L200,250" />
       <circle class="circuit-node" cx="1440" cy="250" r="3" />
       <circle class="circuit-node" cx="200" cy="250" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="7s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-          <mpath href="#c2" />
-        </animateMotion>
+        <animateMotion dur="7s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#c2" /></animateMotion>
       </circle>
 
-      <!-- Línea 3: vertical izquierda (arriba → abajo) -->
       <path id="c3" class="circuit-line" d="M120,0 L120,250 L200,250 L200,500 L120,500 L120,750 L200,750 L200,900" />
       <circle class="circuit-node" cx="120" cy="0" r="3" />
       <circle class="circuit-node" cx="200" cy="900" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="6.5s" repeatCount="indefinite">
-          <mpath href="#c3" />
-        </animateMotion>
+        <animateMotion dur="6.5s" repeatCount="indefinite"><mpath href="#c3" /></animateMotion>
       </circle>
 
-      <!-- Línea 4: vertical derecha (abajo → arriba) -->
       <path id="c4" class="circuit-line" d="M1320,900 L1320,650 L1240,650 L1240,400 L1320,400 L1320,150 L1240,150 L1240,0" />
       <circle class="circuit-node" cx="1320" cy="900" r="3" />
       <circle class="circuit-node" cx="1240" cy="0" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="7.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-          <mpath href="#c4" />
-        </animateMotion>
+        <animateMotion dur="7.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#c4" /></animateMotion>
       </circle>
 
-      <!-- Línea 5: horizontal media (izq → der) -->
       <path id="c5" class="circuit-line" d="M0,450 L250,450 L250,530 L550,530 L550,450 L850,450 L850,530 L1150,530 L1150,450 L1440,450" />
       <circle class="circuit-node" cx="0" cy="450" r="3" />
       <circle class="circuit-node" cx="1440" cy="450" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="8s" repeatCount="indefinite">
-          <mpath href="#c5" />
-        </animateMotion>
+        <animateMotion dur="8s" repeatCount="indefinite"><mpath href="#c5" /></animateMotion>
       </circle>
 
-      <!-- Línea 6: horizontal inferior (der → izq) -->
       <path id="c6" class="circuit-line" d="M1440,720 L1100,720 L1100,800 L750,800 L750,720 L400,720 L400,800 L0,800" />
       <circle class="circuit-node" cx="1440" cy="720" r="3" />
       <circle class="circuit-node" cx="0" cy="800" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-          <mpath href="#c6" />
-        </animateMotion>
+        <animateMotion dur="6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#c6" /></animateMotion>
       </circle>
 
-      <!-- Línea 7: vertical centro (arriba → abajo) -->
       <path id="c7" class="circuit-line" d="M720,0 L720,180 L800,180 L800,400 L720,400 L720,620 L800,620 L800,900" />
       <circle class="circuit-node" cx="720" cy="0" r="3" />
       <circle class="circuit-node" cx="800" cy="900" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlowSoft)">
-        <animateMotion dur="7s" repeatCount="indefinite">
-          <mpath href="#c7" />
-        </animateMotion>
+        <animateMotion dur="7s" repeatCount="indefinite"><mpath href="#c7" /></animateMotion>
       </circle>
 
-      <!-- Línea 8: diagonal-zigzag inferior (der → izq) -->
       <path id="c8" class="circuit-line" d="M1440,870 L1200,870 L1200,820 L900,820 L900,870 L600,870 L600,820 L300,820 L300,870 L0,870" />
       <circle class="circuit-node" cx="1440" cy="870" r="3" />
       <circle class="circuit-node" cx="0" cy="870" r="3" />
       <circle class="neon-dot" r="3.5" filter="url(#neonGlow)">
-        <animateMotion dur="5.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-          <mpath href="#c8" />
-        </animateMotion>
+        <animateMotion dur="5.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#c8" /></animateMotion>
       </circle>
 
-      <!-- Línea 9: horizontal superior central (izq → der) -->
       <path id="c9" class="circuit-line" d="M0,180 L200,180 L200,120 L450,120 L450,200 L700,200" />
       <circle class="circuit-node" cx="0" cy="180" r="3" />
       <circle class="circuit-node" cx="700" cy="200" r="3" />
       <circle class="neon-dot" r="3" filter="url(#neonGlow)">
-        <animateMotion dur="5s" repeatCount="indefinite">
-          <mpath href="#c9" />
-        </animateMotion>
+        <animateMotion dur="5s" repeatCount="indefinite"><mpath href="#c9" /></animateMotion>
       </circle>
 
-      <!-- Línea 10: vertical centro-derecha (abajo → arriba) -->
       <path id="c10" class="circuit-line" d="M1000,900 L1000,680 L1080,680 L1080,450 L1000,450 L1000,200 L1080,200 L1080,0" />
       <circle class="circuit-node" cx="1000" cy="900" r="3" />
       <circle class="circuit-node" cx="1080" cy="0" r="3" />
       <circle class="neon-dot" r="3" filter="url(#neonGlow)">
-        <animateMotion dur="6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-          <mpath href="#c10" />
-        </animateMotion>
+        <animateMotion dur="6s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#c10" /></animateMotion>
       </circle>
 
-      <!-- Línea 11: horizontal inferior (izq → der) -->
       <path id="c11" class="circuit-line" d="M0,620 L300,620 L300,560 L600,560 L600,620 L900,620 L900,560 L1200,560 L1200,620 L1440,620" />
       <circle class="circuit-node" cx="0" cy="620" r="3" />
       <circle class="circuit-node" cx="1440" cy="620" r="3" />
       <circle class="neon-dot" r="3" filter="url(#neonGlow)">
-        <animateMotion dur="7s" repeatCount="indefinite">
-          <mpath href="#c11" />
-        </animateMotion>
+        <animateMotion dur="7s" repeatCount="indefinite"><mpath href="#c11" /></animateMotion>
       </circle>
 
-      <!-- Línea 12: zigzag corto esquina superior derecha (der → izq) -->
       <path id="c12" class="circuit-line" d="M1440,60 L1250,60 L1250,130 L1050,130 L1050,60 L850,60" />
       <circle class="circuit-node" cx="1440" cy="60" r="3" />
       <circle class="circuit-node" cx="850" cy="60" r="3" />
       <circle class="neon-dot" r="3" filter="url(#neonGlowSoft)">
-        <animateMotion dur="5.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-          <mpath href="#c12" />
-        </animateMotion>
+        <animateMotion dur="5.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#c12" /></animateMotion>
       </circle>
     </svg>
   </div>
@@ -174,6 +137,7 @@
       <a href="#servicios" data-i18n="nav.services">Servicios</a>
       <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
       <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
+      <a href="#testimonios" data-i18n="nav.testimonials">Recomendaciones</a>
       <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       <div class="nav__controls">
         <button id="langToggle" class="lang-toggle" aria-label="Cambiar idioma" title="Español / English">ES</button>
@@ -202,7 +166,6 @@
           </div>
         </div>
         <div class="hero__image-wrap">
-          <!-- Imagen en la carpeta images/ -->
           <img src="images/profile.jpg" alt="Fabian Montes" class="hero__image" />
         </div>
       </div>
@@ -213,7 +176,7 @@
       <div class="container">
         <h2 class="section__title" data-i18n="services.title">Soluciones Digitales</h2>
         <p class="section__subtitle" data-i18n="services.subtitle">Full Stack Web & IA Personalizada</p>
-        
+
         <div class="services-grid">
           <div class="service-card reveal">
             <i class="fa-solid fa-code service-card__icon"></i>
@@ -272,33 +235,30 @@
       <div class="container">
         <h2 class="section__title" data-i18n="skills.title">Habilidades</h2>
         <ul class="skills reveal" id="skillsList"></ul>
-        
-        <!-- Tecnologías destacadas -->
-        <div class="tech-stack reveal">
-          <i class="fa-brands fa-react" title="React"></i>
-          <i class="fa-brands fa-node-js" title="Node.js"></i>
-          <i class="fa-brands fa-python" title="Python"></i>
-          <i class="fa-solid fa-brain" title="OpenAI / IA"></i>
-          <i class="fa-brands fa-js" title="JavaScript"></i>
-        </div>
+
+        <div class="tech-stack reveal" id="techStack"></div>
       </div>
     </section>
 
-    <!-- CONTACTO (Con fondo difuminado) -->
+    <!-- TESTIMONIOS / RECOMENDACIONES LINKEDIN -->
+    <section id="testimonios" class="section">
+      <div class="container">
+        <h2 class="section__title" data-i18n="testimonials.title">Recomendaciones</h2>
+        <p class="section__subtitle" data-i18n="testimonials.subtitle">Lo que dicen de mi trabajo en LinkedIn</p>
+        <div class="testimonials-grid" id="testimonialsList"></div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
     <section id="contacto" class="section">
-      <!-- Fondo difuminado -->
       <div class="contact__bg"></div>
-      
+
       <div class="container contact__content">
         <h2 class="section__title" data-i18n="contact.title">Contacto</h2>
         <p class="contact__text" data-i18n="contact.text">
           ¿Tienes un proyecto en mente o quieres saludar? Escríbeme.
         </p>
-        <div class="contact__links">
-          <a href="https://wa.me/+5352483821" target="_blank" rel="noopener" class="btn btn--primary">
-            <i class="fa-brands fa-whatsapp"></i> <span data-i18n="contact.whatsapp">WhatsApp</span>
-          </a>
-        </div>
+        <div class="contacts-grid" id="contactsList"></div>
       </div>
     </section>
   </main>
@@ -310,6 +270,9 @@
   </footer>
 
   <script src="statics/projects.js"></script>
+  <script src="statics/testimonials.js"></script>
+  <script src="statics/contacts.js"></script>
+  <script src="statics/skills.js"></script>
   <script src="statics/script.js"></script>
 </body>
 </html>

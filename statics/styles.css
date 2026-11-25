@@ -17,11 +17,11 @@
   --font-heading: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* Circuit motherboard */
-  --circuit-line: #d4d4d4;       /* color de las pistas en modo claro */
-  --circuit-node: #b0b0b0;      /* nodos/pads en las puntas */
-  --neon: #00f0ff;               /* azul neón */
+  --circuit-line: #d4d4d4;
+  --circuit-node: #b0b0b0;
+  --neon: #00f0ff;
   --neon-soft: #00d4ff;
-  --circuit-opacity: 0.55;      /* visibilidad global del fondo de circuito */
+  --circuit-opacity: 0.55;
 }
 
 [data-theme="dark"] {
@@ -37,7 +37,6 @@
   --shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.7);
 
-  /* Circuit motherboard en modo oscuro: líneas más visibles y neón más intenso */
   --circuit-line: #2a2a35;
   --circuit-node: #3a3a48;
   --neon: #00f0ff;
@@ -71,7 +70,6 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.15; margin: 0 0 .5
 
 .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 
-/* Asegura que el contenido quede por encima del fondo de circuito */
 main { position: relative; z-index: 1; }
 
 /* ===== Nav ===== */
@@ -111,7 +109,7 @@ main { position: relative; z-index: 1; }
 .theme-toggle:hover { transform: rotate(20deg) scale(1.06); border-color: var(--primary); }
 .lang-toggle:hover { border-color: var(--primary); background: color-mix(in srgb, var(--text) 6%, transparent); }
 
-/* ===== Hero (Efecto Iris mejorado) ===== */
+/* ===== Hero ===== */
 .hero { position: relative; overflow: hidden; padding: 6rem 0; }
 .hero__inner {
   position: relative; z-index: 1;
@@ -141,7 +139,6 @@ main { position: relative; z-index: 1; }
 .hero__text { color: var(--text-muted); margin: 1rem 0 2rem; }
 .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-/* Magia para integrar la imagen con efecto Iris amplio */
 .hero__image-wrap {
   position: relative;
   width: 100%;
@@ -157,9 +154,9 @@ main { position: relative; z-index: 1; }
   mix-blend-mode: luminosity;
   transition: filter .4s ease, transform .4s ease;
 }
-.hero__image-wrap:hover .hero__image { 
-  filter: grayscale(0%) contrast(1); 
-  transform: scale(1.03); 
+.hero__image-wrap:hover .hero__image {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.03);
 }
 
 /* ===== Botones ===== */
@@ -218,50 +215,150 @@ main { position: relative; z-index: 1; }
 .chip { padding: .38rem .8rem; border: 1px solid var(--border); border-radius: 999px; font-size: .85rem; background: var(--card); transition: border-color .2s; }
 .chip:hover { border-color: var(--text); }
 
-/* Iconos de Tecnologías */
 .tech-stack { display: flex; gap: 2rem; justify-content: center; font-size: 3rem; color: var(--text-muted); flex-wrap: wrap; }
 .tech-stack i { transition: color .3s, transform .3s; cursor: help; }
 .tech-stack i:hover { color: var(--text); transform: scale(1.15); }
 
-/* ===== Contacto (Con fondo difuminado) ===== */
-#contacto { 
-  position: relative; 
-  overflow: hidden;
+/* ===== Testimonios / LinkedIn ===== */
+.testimonials-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-items: center;
 }
-/* Fondo difuminado del banner */
+.testimonial-card {
+  width: 100%;
+  max-width: 504px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--text);
+  box-shadow: var(--shadow);
+}
+.testimonial-header {
+  padding: .9rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  border-bottom: 1px solid var(--border);
+}
+.testimonial-header strong { font-size: 1rem; color: var(--text); font-family: var(--font-heading); }
+.testimonial-header span { font-size: .85rem; color: var(--text-muted); }
+.testimonial-embed { width: 100%; overflow: hidden; background: var(--bg-alt); min-height: 320px; }
+.testimonial-embed iframe { display: block; width: 100%; border: 0; }
+.testimonial-link {
+  display: block;
+  padding: .75rem 1.2rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-top: 1px solid var(--border);
+  transition: background .2s;
+}
+.testimonial-link:hover { background: var(--bg-alt); }
+
+/* ===== Contacto ===== */
+#contacto { position: relative; overflow: hidden; }
 .contact__bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: url('../images/banner.jpg');
   background-size: cover;
   background-position: center;
-  /* Ajustado: solo un poco de difuminado y bastante visible */
-  filter: blur(4px) brightness(0.85); 
-  opacity: 0.6; 
+  filter: blur(4px) brightness(0.85);
+  opacity: 0.6;
   z-index: 0;
   pointer-events: none;
 }
 [data-theme="dark"] .contact__bg {
-  /* Ajustado para modo oscuro: un poco más oscuro para el contraste */
   filter: blur(4px) brightness(0.4);
-  opacity: 0.75; 
+  opacity: 0.75;
 }
-/* Contenido por encima del fondo */
-.contact__content {
-  position: relative;
-  z-index: 1;
-}
-/* Sombra sutil a los textos para asegurar legibilidad sobre el banner */
+.contact__content { position: relative; z-index: 1; }
 .contact__content .section__title,
 .contact__content .contact__text {
-  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.8); /* En modo claro */
+  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] .contact__content .section__title,
 [data-theme="dark"] .contact__content .contact__text {
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9); /* En modo oscuro */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 .contact__text { color: var(--text-muted); margin-bottom: 1.5rem; }
-.contact__links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Grid de contactos dinámicos */
+.contacts-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-top: 1.5rem;
+}
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  padding: 1rem 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--text);
+}
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  transition: background .2s, color .2s;
+}
+.contact-info { display: flex; flex-direction: column; min-width: 0; }
+.contact-label {
+  font-size: .75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-weight: 600;
+}
+.contact-value {
+  font-size: .95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Colores de marca opcionales */
+.contact-card.brand-whatsapp .contact-icon { background: #25d366; color: #fff; }
+.contact-card.brand-linkedin .contact-icon { background: #0a66c2; color: #fff; }
+.contact-card.brand-github .contact-icon { background: #24292f; color: #fff; }
+.contact-card.brand-email .contact-icon { background: #ea4335; color: #fff; }
+
+/* Estados vacíos / error (testimonios + contactos) */
+.empty-msg, .error-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 1.5rem;
+  font-size: .95rem;
+}
+.error-msg { color: #c0392b; }
 
 /* ===== Footer ===== */
 .footer { position: relative; z-index: 1; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: .9rem; }
@@ -302,6 +399,7 @@ main { position: relative; z-index: 1; }
   .hero { padding: 3rem 0; }
   .section { padding: 3.5rem 0; }
   .tech-stack { font-size: 2.5rem; gap: 1.5rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
 }
 
 /* ===== Fondo de circuito tipo motherboard ===== */
@@ -311,17 +409,11 @@ main { position: relative; z-index: 1; }
   z-index: 0;
   pointer-events: none;
   opacity: var(--circuit-opacity);
-  /* Suaviza la entrada y respeta reduce-motion */
   transition: opacity .4s ease;
 }
 
-.circuit-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+.circuit-svg { width: 100%; height: 100%; display: block; }
 
-/* Las pistas (líneas) del circuito */
 .circuit-line {
   fill: none;
   stroke: var(--circuit-line);
@@ -330,27 +422,18 @@ main { position: relative; z-index: 1; }
   stroke-linejoin: round;
 }
 
-/* Nodos / pads en los extremos de cada pista */
-.circuit-node {
-  fill: var(--circuit-node);
-}
+.circuit-node { fill: var(--circuit-node); }
 
-/* Puntos neón que se desplazan por las pistas */
 .neon-dot {
   fill: var(--neon);
-  /* Sutil drop-shadow para reforzar el glow en navegadores sin filter SVG */
   filter: drop-shadow(0 0 4px var(--neon)) drop-shadow(0 0 8px var(--neon-soft));
 }
 
-/* En modo oscuro, reforzamos el brillo de las pistas mismas */
-[data-theme="dark"] .circuit-line {
-  stroke-width: 1;
-}
+[data-theme="dark"] .circuit-line { stroke-width: 1; }
 [data-theme="dark"] .neon-dot {
   filter: drop-shadow(0 0 6px var(--neon)) drop-shadow(0 0 12px var(--neon-soft));
 }
 
-/* Si el usuario prefiere menos movimiento, congelamos los puntos */
 @media (prefers-reduced-motion: reduce) {
   .circuit-bg { opacity: calc(var(--circuit-opacity) * 0.5); }
   .neon-dot animateMotion { display: none; }

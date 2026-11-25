@@ -1,0 +1,76 @@
+{
+  "groups": [
+    {
+      "title_es": "Lenguajes",
+      "title_en": "Languages",
+      "items": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "C++",
+        "HTML5",
+        "CSS3",
+        "SQL",
+        "PHP"
+      ]
+    },
+    {
+      "title_es": "Frameworks y librerías",
+      "title_en": "Frameworks & Libraries",
+      "items": [
+        "React",
+        "Node.js",
+        "Express",
+        "Tailwind CSS",
+        "Laravel",
+        "Symfony"
+      ]
+    },
+    {
+      "title_es": "Herramientas",
+      "title_en": "Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "GitLab",
+        "Vite",
+        "Figma",
+        "Docker"
+      ]
+    }
+  ],
+  "stack": [
+    {
+      "icon": "fa-brands fa-react",
+      "label": "React"
+    },
+    {
+      "icon": "fa-brands fa-node-js",
+      "label": "Node.js"
+    },
+    {
+      "icon": "fa-brands fa-python",
+      "label": "Python"
+    },
+    {
+      "icon": "fa-solid fa-brain",
+      "label": "OpenAI / IA"
+    },
+    {
+      "icon": "fa-brands fa-js",
+      "label": "JavaScript"
+    },
+    {
+      "icon": "fa-brands fa-php",
+      "label": "PHP"
+    },
+    {
+      "icon": "fa-brands fa-laravel",
+      "label": "Laravel"
+    },
+    {
+      "icon": "fa-brands fa-symfony",
+      "label": "Symfony"
+    }
+  ]
+}

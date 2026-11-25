@@ -1,7 +1,7 @@
 // ===================================================================
 //  projects.js
 //  -------------------------------------------------------------------
-//  Carga los proyectos desde statics/projects.json (fetch) y los
+//  Carga los proyectos desde database/projects.json (fetch) y los
 //  inyecta directamente como HTML dentro de #projectsGrid en
 //  index.html. A partir de ahora, para agregar un proyecto nuevo
 //  NO hace falta tocar este archivo: basta con editar projects.json.
@@ -10,25 +10,8 @@
 // Datos cargados desde el JSON. Se rellena tras el fetch.
 let PROJECTS = [];
 
-// Habilidades. Cada grupo referencia una clave del diccionario de
-// traducciones de script.js. (Se mantiene aquí, sin cambios.)
-const SKILLS = [
-  {
-    key: "skills.languages",
-    items: ["JavaScript", "TypeScript", "Python", "C++", "HTML5", "CSS3", "SQL"]
-  },
-  {
-    key: "skills.frameworks",
-    items: ["React", "Node.js", "Express", "Tailwind CSS"]
-  },
-  {
-    key: "skills.tools",
-    items: ["Git", "GitHub", "Vite", "Figma", "Docker"]
-  }
-];
-
 // Ruta del JSON (relativa a index.html, que está en la raíz del repo).
-const PROJECTS_JSON_URL = "statics/projects.json";
+const PROJECTS_JSON_URL = "database/projects.json";
 
 // -------------------------------------------------------------------
 //  renderProjects: inyecta las tarjetas de proyecto en #projectsGrid.
@@ -91,7 +74,7 @@ async function loadProjects() {
     if (grid) {
       grid.innerHTML =
         "<p class='card__desc'>No se pudieron cargar los proyectos. " +
-        "Verifica que statics/projects.json exista y sea válido.</p>";
+        "Verifica que database/projects.json exista y sea válido.</p>";
     }
   }
 }

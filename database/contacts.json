@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "icon": "fa-brands fa-whatsapp",
+      "label_es": "WhatsApp",
+      "label_en": "WhatsApp",
+      "value": "+53 5 248 3821",
+      "href": "https://wa.me/+5352483821",
+      "brand": "whatsapp"
+    },
+    {
+      "icon": "fa-solid fa-envelope",
+      "label_es": "Email",
+      "label_en": "Email",
+      "value": "fabianrobertomontesrodriguez6@gmail.com",
+      "href": "mailto:fabianrobertomontesrodriguez6@gmail.com",
+      "brand": "email"
+    },
+    {
+      "icon": "fa-brands fa-github",
+      "label_es": "GitHub",
+      "label_en": "GitHub",
+      "value": "fabianrobertomontesrodriguez6-netizen",
+      "href": "https://github.com/fabianrobertomontesrodriguez6-netizen",
+      "brand": "github"
+    },
+    {
+      "icon": "fa-brands fa-linkedin",
+      "label_es": "LinkedIn",
+      "label_en": "LinkedIn",
+      "value": "linkedin.com/in/fabian-roberto-montes-rodriguez-a89241452",
+      "href": "https://www.linkedin.com/in/fabian-roberto-montes-rodriguez-a89241452",
+      "brand": "linkedin"
+    }
+  ]
+}

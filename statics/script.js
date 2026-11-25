@@ -11,6 +11,7 @@ const TRANSLATIONS = {
     "nav.services": "Servicios",
     "nav.projects": "Proyectos",
     "nav.skills": "Habilidades",
+    "nav.testimonials": "Recomendaciones",
     "nav.contact": "Contacto",
     "nav.menuOpen": "Abrir menú",
     "theme.dark": "Cambiar a tema oscuro",
@@ -47,9 +48,17 @@ const TRANSLATIONS = {
     "skills.languages": "Lenguajes",
     "skills.frameworks": "Frameworks y librerías",
     "skills.tools": "Herramientas",
+    "skills.empty": "Aún no hay habilidades configuradas.",
+    "skills.error": "No se pudieron cargar las habilidades.",
+    "testimonials.title": "Recomendaciones",
+    "testimonials.subtitle": "Lo que dicen de mi trabajo en LinkedIn",
+    "testimonials.viewPost": "Ver publicación original ↗",
+    "testimonials.empty": "Aún no hay recomendaciones publicadas.",
+    "testimonials.error": "No se pudieron cargar las recomendaciones.",
     "contact.title": "Contacto",
     "contact.text": "¿Tienes un proyecto en mente o quieres saludar? Escríbeme.",
-    "contact.whatsapp": "WhatsApp",
+    "contacts.empty": "Sin métodos de contacto configurados.",
+    "contacts.error": "No se pudieron cargar los datos de contacto.",
     "footer.text": "Hecho con JS y ☕"
   },
   en: {
@@ -57,6 +66,7 @@ const TRANSLATIONS = {
     "nav.services": "Services",
     "nav.projects": "Projects",
     "nav.skills": "Skills",
+    "nav.testimonials": "Recommendations",
     "nav.contact": "Contact",
     "nav.menuOpen": "Open menu",
     "theme.dark": "Switch to dark theme",
@@ -93,9 +103,17 @@ const TRANSLATIONS = {
     "skills.languages": "Languages",
     "skills.frameworks": "Frameworks & Libraries",
     "skills.tools": "Tools",
+    "skills.empty": "No skills configured yet.",
+    "skills.error": "Could not load skills.",
+    "testimonials.title": "Recommendations",
+    "testimonials.subtitle": "What people say about my work on LinkedIn",
+    "testimonials.viewPost": "View original post ↗",
+    "testimonials.empty": "No recommendations published yet.",
+    "testimonials.error": "Could not load recommendations.",
     "contact.title": "Contact",
     "contact.text": "Got a project in mind or just want to say hi? Drop me a line.",
-    "contact.whatsapp": "WhatsApp",
+    "contacts.empty": "No contact methods configured.",
+    "contacts.error": "Could not load contact data.",
     "footer.text": "Made with JS and ☕"
   }
 };
@@ -123,25 +141,6 @@ function applyTranslations() {
   langBtn.setAttribute("aria-label", t("lang.switch"));
 
   document.documentElement.lang = currentLang;
-}
-
-// ===== Renderizar proyectos =====
-// Nota: renderProjects() ahora vive en statics/projects.js y lee los
-// datos desde statics/projects.json. Desde aquí solo la llamamos
-// (init() y el cambio de idioma la invocan).
-// ===== Renderizar habilidades =====
-function renderSkills() {
-  const list = document.getElementById("skillsList");
-  if (!list) return;
-
-  list.innerHTML = SKILLS.map((group) => `
-    <li class="skill-group">
-      <h3 class="skill-group__title">${t(group.key)}</h3>
-      <ul class="skill-group__list">
-        ${group.items.map((s) => `<li class="chip">${s}</li>`).join("")}
-      </ul>
-    </li>
-  `).join("");
 }
 
 // ===== Tema =====
@@ -229,6 +228,8 @@ function initLangToggle() {
     localStorage.setItem("lang", currentLang);
     applyTranslations();
     renderProjects();
+    renderTestimonials();
+    renderContacts();
     renderSkills();
     initReveal();
   });
@@ -237,7 +238,9 @@ function initLangToggle() {
 // ===== Init =====
 function init() {
   applyTranslations();
-  renderProjects();
+  renderProjects();       // vacío hasta que loadProjects() termine
+  renderTestimonials();   // vacío hasta que loadTestimonials() termine
+  renderContacts();       // vacío hasta que loadContacts() termine
   renderSkills();
   initTheme();
   initMenu();
